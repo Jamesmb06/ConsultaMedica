@@ -7,6 +7,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/pacientes")
 public class PacienteController {
@@ -14,15 +16,15 @@ public class PacienteController {
     @Autowired
     private PacienteService pacienteService;
 
-    @PostMapping("")
+    @PostMapping("/post")
     public ResponseEntity addPaciente(@RequestBody Paciente paciente) {
         pacienteService.addPaciente(paciente);
         return new ResponseEntity(HttpStatus.CREATED);
     }
 
     @PutMapping("/{cedula}")
-    public ResponseEntity updatePaciente(@PathVariable String cedula, @RequestBody Paciente paciente) {
-        pacienteService.updatePaciente(cedula, paciente);
+    public ResponseEntity updatePaciente(@RequestBody Paciente paciente) {
+        pacienteService.updatePaciente(paciente);
         return new ResponseEntity(HttpStatus.OK);
     }
 
@@ -31,4 +33,10 @@ public class PacienteController {
         pacienteService.delPaciente(cedula);
         return new ResponseEntity(HttpStatus.NO_CONTENT);
     }
+    @GetMapping("/get")
+    public ResponseEntity<List<Paciente>> listPacientes() {
+        return new ResponseEntity(pacienteService.listPacientes(), HttpStatus.OK);
+
+    }
+
 }

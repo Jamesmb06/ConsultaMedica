@@ -15,19 +15,23 @@ public class PacienteRepository {
 
     public PacienteRepository() {
         this.pacientes = new ArrayList<>();
-
     }
     public void addPaciente(Paciente paciente) {pacientes.add(paciente);
     }
 
     public void updatePaciente(Paciente paciente) {
-        //Logica modificar
     }
     public void delPaciente(String cedula) {
         pacientes = pacientes.stream().filter(paciente -> paciente.getCedula().equals(cedula))
                 .collect(Collectors.toList());
 
+    }
+    public List<Paciente> getPacientes() {
+        return pacientes;
+    }
 
+    public List<Paciente> listPacientes() {
+        return pacientes;
     }
 
 

@@ -6,6 +6,9 @@ import com.co.sofka.Repository.PacienteRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Service
 public class PacienteService implements IPacienteService {
 
@@ -15,19 +18,26 @@ public class PacienteService implements IPacienteService {
     private HistorialRepository historialRepository;
 
     @Override
+    public List<Paciente> listPacientes() {
+
+        return pacienteRepository.listPacientes();
+    }
+
+    @Override
     public void addPaciente(Paciente paciente) {
+
         pacienteRepository.addPaciente(paciente);
     }
+
     @Override
     public void updatePaciente(Paciente paciente) {
-        this.updatePaciente("12345", paciente);
-    }
-    public void updatePaciente(String cedula, Paciente paciente) {
         pacienteRepository.updatePaciente(paciente);
+
     }
     @Override
     public void delPaciente(String cedula) {
-        pacienteRepository.delPaciente(cedula);
 
+        pacienteRepository.delPaciente(cedula);
     }
+
 }
