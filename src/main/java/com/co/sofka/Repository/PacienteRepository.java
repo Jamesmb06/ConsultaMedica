@@ -26,10 +26,6 @@ public class PacienteRepository {
                 .collect(Collectors.toList());
 
     }
-    public List<Paciente> getPacientes() {
-        return pacientes;
-    }
-
     public List<Paciente> listPacientes() {
         return pacientes;
     }
