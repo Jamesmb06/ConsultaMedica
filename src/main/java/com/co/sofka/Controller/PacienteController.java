@@ -5,13 +5,10 @@ import com.co.sofka.Service.PacienteService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("")
+@RequestMapping("/pacientes")
 public class PacienteController {
 
     @Autowired
@@ -23,4 +20,15 @@ public class PacienteController {
         return new ResponseEntity(HttpStatus.CREATED);
     }
 
+    @PutMapping("/{cedula}")
+    public ResponseEntity updatePaciente(@PathVariable String cedula, @RequestBody Paciente paciente) {
+        pacienteService.updatePaciente(cedula, paciente);
+        return new ResponseEntity(HttpStatus.OK);
+    }
+
+    @DeleteMapping("/{cedula}")
+    public ResponseEntity delPaciente(@PathVariable String cedula) {
+        pacienteService.delPaciente(cedula);
+        return new ResponseEntity(HttpStatus.NO_CONTENT);
+    }
 }

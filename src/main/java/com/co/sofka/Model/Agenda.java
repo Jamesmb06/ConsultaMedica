@@ -1,12 +1,19 @@
 package com.co.sofka.Model;
 
-import java.time.LocalTime;
-import java.util.Set;
+import lombok.Data;
 
+import java.time.LocalDateTime;
+import java.time.LocalTime;
+
+@Data
 public class Agenda {
-    private String dia;
-    private LocalTime horaInicio;
-    private LocalTime horaFin;
+
+    private String disponibilidad;
+    private String diaSemana;
+    private LocalDateTime fecha;
+
+
 
 
 }
+

@@ -18,14 +18,16 @@ public class PacienteService implements IPacienteService {
     public void addPaciente(Paciente paciente) {
         pacienteRepository.addPaciente(paciente);
     }
-
     @Override
     public void updatePaciente(Paciente paciente) {
-
+        this.updatePaciente("12345", paciente);
     }
-
+    public void updatePaciente(String cedula, Paciente paciente) {
+        pacienteRepository.updatePaciente(paciente);
+    }
     @Override
     public void delPaciente(String cedula) {
+        pacienteRepository.delPaciente(cedula);
 
     }
 }
